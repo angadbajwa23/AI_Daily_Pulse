@@ -27,8 +27,6 @@ import {RssFeedItem} from '@/services/rss-feed';
 import {getAINewsFromRssFeed} from '@/services/rss-feed';
 import {useEffect, useState} from 'react';
 
-const rssFeedUrl = 'https://www.artificialintelligence-news.com/feed/';
-
 export default function Home() {
   const [news, setNews] = useState<NewsArticle[]>([]);
   const [papers, setPapers] = useState<ArxivPaper[]>([]);
@@ -42,7 +40,7 @@ export default function Home() {
       const papersData = await getAIResearchPapers('cs.AI');
       setPapers(papersData);
 
-      const rssData = await getAINewsFromRssFeed(rssFeedUrl);
+      const rssData = await getAINewsFromRssFeed();
       setRssFeedItems(rssData);
     };
 

@@ -1,3 +1,5 @@
+import {getAiNews} from '@/ai/flows/get-ai-news';
+
 /**
  * Represents a news item from an RSS feed.
  */
@@ -30,16 +32,11 @@ export interface RssFeedItem {
  * @param feedUrl The URL of the RSS feed.
  * @returns A promise that resolves to an array of RssFeedItem objects.
  */
-export async function getAINewsFromRssFeed(feedUrl: string): Promise<RssFeedItem[]> {
-  // TODO: Implement this by calling an RSS feed API.
+export async function getAINewsFromRssFeed(): Promise<RssFeedItem[]> {
+  const news1 = await getAiNews('latest AI news');
+  const news2 = await getAiNews('recent developments in AI');
 
-  return [
-    {
-      title: 'Sample AI News from RSS',
-      url: 'https://example.com/ai-rss',
-      sourceName: 'Example RSS Feed',
-      publishedDate: '2024-01-02',
-      summary: 'This is a sample AI news article from an RSS feed.',
-    },
-  ];
+  // Combine and return the results
+  return [...news1, ...news2];
 }
+
